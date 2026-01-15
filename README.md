@@ -11,8 +11,6 @@
 ## 🇺🇸 ENGLISH
 
 ### 🎯 The Problem
-AI Agents live in a silent text box. When they finish a long task (compiling, deploying, researching), you have to keep staring at the window to know.
-
 **Also, are your Windows notifications bugged and silent?**
 If you work with **Antigravity**, add this to your AI rules to ensure it actually triggers the notification:
 ```markdown
@@ -50,8 +48,6 @@ If this tool helps your workflow, consider supporting usage!
 ## 🇫🇷 FRANÇAIS
 
 ### 🎯 Le Problème
-Les agents IA vivent dans une boîte textuelle silencieuse. Quand ils terminent une tâche longue (compilation, déploiement), vous devez surveiller la fenêtre pour le savoir.
-
 **Vous aussi vos notifications Windows sont buguées et ne veulent pas émettre de son ?**
 Pas de soucis ! Si vous travaillez sur **Antigravity**, ajoutez ceci dans les règles de l'IA :
 ```markdown
@@ -89,9 +85,7 @@ Si cet outil vous aide, pensez à faire un don !
 ## 🎵 Customization / Personnalisation
 Replace files in `Sounds/` folder / Remplacez les fichiers dans le dossier `Sounds/` :
 - `1.mp3` : Success / Succès
-- `2.mp3` : Error / Erreur
 - `3.mp3` : Long Task / Tâche Longue
-- `4.mp3` : Acknowledge / Accusé
 
 ---
 
