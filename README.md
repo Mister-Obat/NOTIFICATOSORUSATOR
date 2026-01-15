@@ -21,7 +21,6 @@ AI Agents live in a silent text box. When they finish a long task (compiling, de
 - **🧠 Smart Logic**: Parses notification text to choose the right sound:
   - Contains **"command"** or **"run"** -> 🎵 Plays "Long Task" sound (`3.mp3`).
   - Any other text -> 🎵 Plays "Success/Default" sound (`1.mp3`).
-- **📂 Manual Trigger**: Monitors a local `trigger.txt` file for specific sound IDs.
 - **⚡ Lightweight**: Built as a native WPF app (.NET 7).
 
 ### 🛠️ Installation & Usage
@@ -30,12 +29,7 @@ AI Agents live in a silent text box. When they finish a long task (compiling, de
 3. **Run**: Launch `Notificatosorusator.exe` from `./bin/Debug/net7.0-windows10.0.19041.0/`.
 4. **Grant Access**: Allow "Notification Access" when prompted.
 
-### 🎮 Manual Trigger Protocol
-Write an ID into `./trigger.txt` to play a specific sound:
-- `1` : Task Complete
-- `2` : Error
-- `3` : Long Task Start
-- `4` : Acknowledgement (Oki Doki)
+
 
 ### ❤️ Support
 If this tool helps your workflow, consider supporting usage!
@@ -57,7 +51,6 @@ Les agents IA vivent dans une boîte textuelle silencieuse. Quand ils terminent 
 - **🧠 Logique Intelligente** : Analyse le texte pour choisir le bon son :
   - Contient **"command"** ou **"run"** -> 🎵 Son "Tâche Longue" (`3.mp3`).
   - Tout autre texte -> 🎵 Son "Succès/Défaut" (`1.mp3`).
-- **📂 Déclencheur Manuel** : Surveille un fichier local `trigger.txt`.
 - **⚡ Léger** : Application native WPF (.NET 7).
 
 ### 🛠️ Installation et Utilisation
@@ -66,12 +59,7 @@ Les agents IA vivent dans une boîte textuelle silencieuse. Quand ils terminent 
 3. **Lancement** : Lancez `Notificatosorusator.exe` depuis `./bin/Debug/net7.0-windows10.0.19041.0/`.
 4. **Accès** : Autorisez l'"Accès aux notifications" à la demande.
 
-### 🎮 Protocole de Déclenchement Manuel
-Écrivez un ID dans `./trigger.txt` pour jouer un son spécifique :
-- `1` : Tâche Terminée
-- `2` : Erreur
-- `3` : Début de Tâche Longue
-- `4` : Accusé de Réception (Oki Doki)
+
 
 ### ❤️ Soutien
 Si cet outil vous aide, pensez à faire un don !
@@ -90,7 +78,7 @@ Replace files in `Sounds/` folder / Remplacez les fichiers dans le dossier `Soun
 ---
 
 ## 📜 License
-MIT.
+Ce projet est distribué sous la licence AGPL-3.0.
 
 ---
 *Codé avec l'assistance de l'IA*

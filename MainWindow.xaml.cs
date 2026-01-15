@@ -11,14 +11,12 @@ namespace Notificatosorusator
 {
     public partial class MainWindow : Window
     {
-        private FileSystemWatcher _watcher;
-        private string _rootPath = @"d:\Créations\Programmation\NOTIFICATOSORUSATOR";
+
 
         public MainWindow()
         {
             InitializeComponent();
             Log("Initialized.");
-            InitializeFileWatcher();
             Task.Run(() => RunPollingLoop());
         }
 
@@ -31,42 +29,7 @@ namespace Notificatosorusator
             });
         }
 
-        private void InitializeFileWatcher()
-        {
-            try
-            {
-                if (Directory.Exists(_rootPath))
-                {
-                    _watcher = new FileSystemWatcher(_rootPath, "trigger.txt");
-                    _watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.CreationTime;
-                    _watcher.Changed += OnFileTrigger;
-                    _watcher.Created += OnFileTrigger;
-                    _watcher.EnableRaisingEvents = true;
-                    Log($"[Watcher] Active on {_rootPath}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log($"[Watcher] Error: {ex.Message}");
-            }
-        }
 
-        private async void OnFileTrigger(object sender, FileSystemEventArgs e)
-        {
-            await Task.Delay(100);
-            try
-            {
-                if (File.Exists(e.FullPath))
-                {
-                    string content = await File.ReadAllTextAsync(e.FullPath);
-                    string id = content.Trim();
-                    Log($"[Watcher] Triggered ID: {id}");
-                    PlaySoundById(id);
-                    File.Delete(e.FullPath);
-                }
-            }
-            catch { }
-        }
 
         private async Task RunPollingLoop()
         {

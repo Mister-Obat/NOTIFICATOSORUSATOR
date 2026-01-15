@@ -29,15 +29,7 @@ Simply use the `notify_user` tool.
 - To signal a start: `notify_user(message="Running command...")`
 - To signal end: `notify_user(message="Task done.")`
 
-### Method B: Manual (Legacy/Fallback)
-The application monitors the file `./trigger.txt`.
-Writing **any string** into this file triggers the corresponding sound if it exists in the `Sounds/` directory (e.g., writing "foo" plays "Sounds/foo.mp3").
 
-**Standard Protocol (Sound Map):**
-- `1` : Task Complete
-- `2` : Error
-- `3` : Long Task Start
-- `4` : Acknowledgement (Oki Doki)
 
 ## 4. Constraints
 - The application must be running to play sounds.
