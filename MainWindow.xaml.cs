@@ -103,10 +103,12 @@ namespace Notificatosorusator
 
                         Log($"[New Toast] App: {appName} | Content: {fullText}");
 
-                        // FILTER: Only allow Antigravity
-                        if (!appName.Contains("Antigravity", StringComparison.OrdinalIgnoreCase))
+                        // FILTER: Only allow Antigravity or Windows PowerShell (Claude Code)
+                        bool isAllowed = appName.Contains("Antigravity", StringComparison.OrdinalIgnoreCase)
+                                      || appName.Contains("PowerShell", StringComparison.OrdinalIgnoreCase);
+                        if (!isAllowed)
                         {
-                            Log($"[Ignored] Source is not Antigravity.");
+                            Log($"[Ignored] Source is not Antigravity or PowerShell.");
                             continue;
                         }
 
