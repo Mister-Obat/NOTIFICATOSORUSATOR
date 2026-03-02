@@ -16,7 +16,8 @@ It allows the AI to trigger sound alerts to catch the user's attention when task
 
 ### Method A: Automatic (Preferred)
 The application listens to **Windows Toast Notifications** emitted by the Agent (via `notify_user`).
-**Constraint:** The notification source (App Name) MUST be **"Antigravity"**.
+**Constraint:** The notification source (App Name) MUST match an enabled source in the UI.
+Default enabled sources are **"Antigravity"** and **"PowerShell"**.
 It parses the text content of the notification to decide which sound to play.
 
 **Audio Logic Rules:**
@@ -41,7 +42,7 @@ Simply use the `notify_user` tool.
 | File / Directory | Description |
 | :--- | :--- |
 | **[Notificatosorusator.csproj](Notificatosorusator.csproj)** | Main Project File (WPF, .NET 7). Defines build settings and asset copying. |
-| **[MainWindow.xaml.cs](MainWindow.xaml.cs)** | **Core Logic**. Contains the `UserNotificationListener` polling loop, `FileSystemWatcher`, and Audio Playback logic. |
+| **[MainWindow.xaml.cs](MainWindow.xaml.cs)** | **Core Logic**. Contains the `UserNotificationListener` polling loop, source filtering (Antigravity/PowerShell), and Audio Playback logic. |
 | **[Package.appxmanifest](Package.appxmanifest)** | Manifest declaring the Application Identity and the `userNotificationListener` capability (Required for API access). |
 | **[REGISTER_APP.ps1](REGISTER_APP.ps1)** | PowerShell script to register the app identity on the machine (One-time setup). |
 | **[Sounds/](Sounds/)** | Directory containing the `.mp3` audio assets (`1.mp3` to `4.mp3`). |
