@@ -13,6 +13,7 @@ namespace Notificatosorusator
 {
     public partial class MainWindow : Window
     {
+        private const string VolumeSettingFileName = "volume.txt";
         private volatile bool _allowAntigravity = true;
         private volatile bool _allowPowerShell = true;
         private volatile int _audioVolumePercent = 100;
@@ -21,7 +22,9 @@ namespace Notificatosorusator
 
         public MainWindow()
         {
+            LoadPersistedVolume();
             InitializeComponent();
+            VolumeSlider.Value = _audioVolumePercent;
             _isUiReady = true;
             ApplyUiSettings();
             Log("Initialized.");
@@ -99,7 +102,51 @@ namespace Notificatosorusator
             ApplyUiSettings();
             if (_isUiReady && VolumeSlider != null)
             {
+                SavePersistedVolume();
                 Log($"[Audio] Volume set to {Math.Round(VolumeSlider.Value):0}%");
+            }
+        }
+
+        private void LoadPersistedVolume()
+        {
+            try
+            {
+                string appDataDir = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Notificatosorusator");
+                string settingsPath = Path.Combine(appDataDir, VolumeSettingFileName);
+
+                if (!File.Exists(settingsPath))
+                {
+                    return;
+                }
+
+                string text = File.ReadAllText(settingsPath).Trim();
+                if (int.TryParse(text, out int volume))
+                {
+                    _audioVolumePercent = (int)Math.Clamp(volume, 0, 100);
+                }
+            }
+            catch
+            {
+                // Keep default volume when persistence storage is unavailable.
+            }
+        }
+
+        private void SavePersistedVolume()
+        {
+            try
+            {
+                string appDataDir = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Notificatosorusator");
+                Directory.CreateDirectory(appDataDir);
+                string settingsPath = Path.Combine(appDataDir, VolumeSettingFileName);
+                File.WriteAllText(settingsPath, _audioVolumePercent.ToString());
+            }
+            catch (Exception ex)
+            {
+                Log($"[Audio] Volume persistence unavailable: {ex.Message}");
             }
         }
 
